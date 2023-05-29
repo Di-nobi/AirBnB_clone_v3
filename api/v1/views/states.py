@@ -4,12 +4,14 @@ from flask import jsonify, make_response, abort
 from models.state import State
 from models import storage
 
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def state():
+    """ Gets all states """
     new_state = []
     for state in storage.all(State).values():
         new_state.append(state)
     return jsonify(new_state.to_dict()), 200
-@app_views.route('/api/v1/states/<state_id>', method=['GET'])
+@app_views.route('/states/<state_id>', method=['GET'], strict_slashes=False)
 def state_retrieval(state_id):
     """ Retrieve state """
     find_state = storage.get(State, state_id)
@@ -18,7 +20,7 @@ def state_retrieval(state_id):
     else:
         return jsonify(find_state.to_dict())
 
-@app_views.route('/api/v1/states/<state_id>' method=['DELETE'])
+@app_views.route('/states/<state_id>' method=['DELETE'], strict_slashes=False)
 def delete():
     """ deletes a state """
     del_state = storage.get(State, state_id)

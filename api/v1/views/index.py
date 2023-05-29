@@ -6,12 +6,12 @@ from models.base_model import BaseModel
 from models import storage
 
 
-@app_views.route('/status')
+@app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status():
     """ Status return OK """
     return jsonify({"status": "OK"})
 
-@app_views.route('/api/v1/stats')
+@app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def stats():
     """ Retrieves number of each of the object """
     return jsonify({"amenities": storage.count("Amenity"),
