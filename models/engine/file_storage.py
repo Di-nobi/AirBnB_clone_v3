@@ -72,7 +72,10 @@ class FileStorage:
         for find in getter.values():
             if find.id == id:
                 return find
+<<<<<<< HEAD
             
+=======
+>>>>>>> 0c03eb61bcebdce342dba943c2756946fee08ccf
         return None
 
     def count(self, cls=None):
