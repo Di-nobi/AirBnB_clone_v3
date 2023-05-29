@@ -79,6 +79,7 @@ class DBStorage:
                 return find
             else:
                 return None
+
     def count(self, cls=None):
         """ A method to count the number of objects in storage """
         if cls is None:
