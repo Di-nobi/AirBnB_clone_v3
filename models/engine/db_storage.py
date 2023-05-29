@@ -77,8 +77,7 @@ class DBStorage:
         for find in dic.values():
             if find.id == id:
                 return find
-            else:
-                return None
+        return None
 
     def count(self, cls=None):
         """ A method to count the number of objects in storage """
