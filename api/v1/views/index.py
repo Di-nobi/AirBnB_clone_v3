@@ -12,7 +12,7 @@ def stats():
     """ An end point for retrieval of objects """
     return jsonify({"amenities": storage.count("Amenity"),
                    "cities": storage.count("City"),
-                   "users": storage.count("User"),
+                   "reviews": storage.count("Review"),
                    "places": storage.count("Place"),
                    "states": storage.count("State"),
-                   "reviews": storage.count("Review")})
+                   "users": storage.count("User")})
