@@ -7,15 +7,18 @@ import os
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def close_storage(e):
     """ Closes Storage """
     storage.close()
 
+
 @app.errorhandler(404)
 def error(e):
     """ Handles error """
     return jsonify({'error': 'Not found'}), 404
+
 
 if __name__ == "__main__":
     """ Function """
