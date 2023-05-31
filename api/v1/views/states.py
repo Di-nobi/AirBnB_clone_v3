@@ -9,9 +9,9 @@ def state():
     """ Lists all States """
     new_state = []
     for state in storage.all(State).values():
-        new_state.append(state)
+        new_state.append(state.to_dict())
+    return jsonify(new_state), 200
 
-    return jsonify(new_state.to_dict()), 200
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state(state_id):
     """ Get a state """
