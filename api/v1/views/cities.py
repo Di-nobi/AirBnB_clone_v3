@@ -9,10 +9,13 @@ from models.city import City
 def city():
     """ Lists all cities """
     new_city = []
-    for state in storage.all(State).values():
-        new_state.append(state)
+    state = storage.get(State, state_id)
+    if not state:
+        abort(404)
+    for city in state.cities:
+        new_city.append(city.to_dict())
 
-    return jsonify(new_state.to_dict()), 200
+    return jsonify(new_city), 200
 @app_views.route('/cities/<city_id>', methods=['GET'], strict_slashes=False)
 def get_city(city_id):
     """ Get a city """
@@ -32,24 +35,28 @@ def del_city(city_id):
     storage.save()
     return jsonify({}), 200
 
-@app_views.route('/cities', methods=['POST'], strict_slashes=False)
-def post_city():
+@app_views.route('/states/<state_id>/cities', methods=['POST'], strict_slashes=False)
+def post_city(state_id):
     """ Creates a city """
     if not request.get_json():
         abort(400, "Not a JSON")
+    state = storage.get(State, state_id)
+    if not state:
+        abort(404)
     if 'name' not in request.get_json():
         abort(400, "Missing name")
 
     param = request.get_json()
-    data_ins = State(**param)
+    param["state_id"] = state_id
+    data_ins = City(**param)
     data_ins.save()
     return jsonify(data_ins.to_dict()), 201
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 def put_city(city_id):
     """ Updates a City """
-    put_st = storage.get(City, city_id)
-    if put_st is None:
+    put_city = storage.get(City, city_id)
+    if put_city is None:
         abort(404)
     if not request.get_json():
         abort(400, "Not a Json")
@@ -58,7 +65,7 @@ def put_city(city_id):
 
     for k, v in param.items():
         if k not in ignore_key:
-            setattr(put_st, k, v)
-    storage.save()
+            setattr(put_city, k, v)
+    put_city.save()
 
-    return jsonify(put_st.to_dict()), 200
+    return jsonify(put_city.to_dict()), 200
