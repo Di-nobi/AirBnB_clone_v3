@@ -19,7 +19,7 @@ def list_user():
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 def get_user(user_id):
     """ Gets an user """
-    user = storage.get(Amenity, amenity_id)
+    user = storage.get(User, user_id)
 
     if not user:
         abort(404)
