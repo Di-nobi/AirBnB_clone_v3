@@ -70,4 +70,4 @@ def put_place(place_id):
         if k not in ignore_keys:
             setattr(place, k, v)
     storage.save()
-    return jsonify(place.to_dict), 200
+    return jsonify(place.to_dict()), 200
