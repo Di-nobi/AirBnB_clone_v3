@@ -28,7 +28,7 @@ class User(BaseModel, Base):
         """initializes user"""
         super().__init__(*args, **kwargs)
 
-    def __setattr__(self, passwd, name):
+    def __setattr__(self, name, passwd):
         """ Sets a password """
         if name == "password":
             passwd = md5(passwd.encode()).hexdigest()
