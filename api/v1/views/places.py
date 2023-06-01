@@ -13,10 +13,8 @@ def get_place(city_id):
     city = storage.get(City, city_id)
     if not city:
         abort(404)
-    get_place = []
-    for result in city.places():
-        get_place.append(result.to_dict())
-    return jsonify(get_place), 200
+    get_place = [place.to_dict() for place in city.places]
+    return jsonify(get_place)
 @app_views.route('/places/<place_id>', methods=['GET'], strict_slashes=False)
 def a_place(place_id):
     """ Gets a single place """
