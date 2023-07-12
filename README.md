@@ -157,8 +157,8 @@ No known bugs at this time.
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
 ## Authors_v2
-Dinobi Udeh - udehdinobi@gmail.com
-Cynthia Uche - [Github]  (https://github.com/thegirlSynth)
+Dinobi Udeh - [Github](https://www.github.com/Di-nobi/)
+Cynthia Uche - [Github](https://www.github.com/thegirlSynth/)
 Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection. 
